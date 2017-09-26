@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="content">
-      <div class="find_nav" ref="tab">
+        <div class="find_nav" ref="tab">
         <ul class="tab">
           <li class="tab_item active">
             <router-link to="/dog/home">
@@ -60,8 +60,7 @@
         </ul>
       </div>
 
-
-    </div>
+     </div>
     </div>
 
 
@@ -71,14 +70,25 @@
 <script>
   import xiazaiApp from '../xiazaiApp/xiazaiApp.vue'
   import BScroll from 'better-scroll'
+  import axios from 'axios'
 
   export default{
+
+    data(){
+      return{
+        menus: []
+      }
+    },
+
     mounted(){
       new BScroll(this.$refs.tab, {
         click: true,
         scrollX: true,
         scrollY: false,
       })
+
+
+
     },
     components:{
       xiazaiApp,

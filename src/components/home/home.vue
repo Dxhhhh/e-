@@ -16,14 +16,7 @@
           </div>
           <div class="columnnavdiv">
             <ul class="clearfix">
-              <li class="fl"><a href="###"><img src="../../../static/banner/1.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/2.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/3.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/4.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/5.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/6.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/7.png" lazy="loaded"></a></li>
-              <li class="fl"><a href="###"><img src="../../../static/banner/8.png" lazy="loaded"></a></li>
+              <li class="fl" v-for="menu2 in menus2"><a :href="menu2.target.param"><img :src="menu2.image" lazy="loaded"></a></li>
             </ul>
           </div>
           <pageLine></pageLine>
@@ -237,9 +230,7 @@
             </div>
           </div>
           <pinpai></pinpai>
-          <pinpai></pinpai>
-          <pinpai></pinpai>
-          <pinpai></pinpai>
+
           <pageLine></pageLine>
           <div class="custom_tite">
             <div class="centerimg titclass overflow" style="border-bottom: 0px solid;">
@@ -365,6 +356,8 @@
 </template>
 
 <script>
+  import BScroll from 'better-scroll'
+  import axios from 'axios'
   import header from  '../header/header.vue'
 
   import footer from '../footer/footer.vue'
@@ -372,22 +365,31 @@
   import carousel from '../Carousel/carousel.vue'
   import pageLine from '../line/line.vue'
   import pinpai from '../pinpai/pinpai.vue'
-  import BScroll from 'better-scroll'
+
   import banner from './banner.gif'
   export default{
 
+    data(){
+      return{
+        menus2: [],
+
+      }
+    },
+
     mounted(){
-      new BScroll(this.$refs.pro,{
+      new BScroll(this.$refs.pro, {
         click: true,
         scrollX: true,
         scrollY: false,
       })
-       /* this.$nextTick(()=>{
-          new BScroll(this.$refs.wrap,{
-            click: true,
+
+      axios.get('/dog/datas/menus2')
+        .then((response)=>{
+          const result = response.data
+          this.menus2 = result.data.menus
         })
 
-        })*/
+
 
     },
     components: {

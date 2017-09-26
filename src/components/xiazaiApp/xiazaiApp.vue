@@ -1,12 +1,12 @@
 <template>
-  <div class="overflow xiazaiApp" style="display: block;">
+  <div class="overflow xiazaiApp" style="display: block;" v-show="isShow">
     <div class="overflow rela">
-      <span class="closebtn">
-        <img id="close_down_bar" :src="closebtn">
+      <span class="closebtn" @click="showApp" >
+        <img id="close_down_bar" src="./closebtn_03.png">
       </span>
       <div class="appdowimg">
         <a href="###" style="display: block;">
-          <img :src="xiazai">
+          <img src="./xiazaiApp.png">
         </a>
       </div>
     </div>
@@ -14,15 +14,18 @@
 </template>
 
 <script>
-  import closebtn from './closebtn_03.png'
-  import xiazai from './xiazaiApp.png'
+
   export default{
     data(){
       return{
-        closebtn,
-        xiazai
+        isShow: true
       }
-    }
+    },
+   methods:{
+     showApp(){
+       this.isShow=false
+     }
+   }
   }
 </script>
 

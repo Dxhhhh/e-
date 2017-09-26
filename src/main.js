@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import app from './components/app.vue'
 import router from './router'
+import './mock/mockDogType'
 
 import VueScroller from 'vue-scroller'
 
